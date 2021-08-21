@@ -3,6 +3,7 @@ import './style.css';
 import Header from './components/Header'
 import Task from './components/Task'
 import Completed from './components/Completed'
+import AddTask from './components/AddTask'
 import { useState } from 'react'
 
 
@@ -48,10 +49,16 @@ export default function App() {
     
   }
 
+  //add task
+  function addTask(task){
+    setTask([...tasks, task])
+  }
+
   return (
     <div className="App-container">
         <Header />
         <p>holla amigos!!</p>
+        <AddTask addTask={addTask}/>
        
         {tasks.map((task) => (<Task key={task.id} task={task} deleteTask={deleteTask} toggleCompleted={toggleCompleted}/>))}
         <Completed deleteCompleted={deleteCompleted}/>
